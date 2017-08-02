@@ -1,3 +1,5 @@
+import { questions } from '../data/questions';
+
 export const BUTTON_CLICKED = 'BUTTON_CLICKED';
 export const CHECK_QUESTION = 'CHECK_QUESTION';
 export const NEXT_QUESTION = 'NEXT_QUESTION';
@@ -23,7 +25,12 @@ export function nextQuestion() {
   };
 }
 
-export function fetchQuiz(quiz) {
+export function fetchQuiz(quizSettings) {
+  const quiz = {
+    quizSettings,
+    questions
+  };
+
   return {
     type: FETCH_QUIZ,
     payload: quiz

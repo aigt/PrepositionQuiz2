@@ -1,4 +1,3 @@
-import { questions } from '../data/questions';
 import { FETCH_QUIZ, BUTTON_CLICKED, CHECK_QUESTION, NEXT_QUESTION } from '../actions/QuestionActions';
 
 export const IS_AFTER_BE_SUBQUESTION = 1;
@@ -50,7 +49,7 @@ const mapSubquestions = (question) => {
  * @param {integer} selected if all questions are divided by capacity, we have
  * a number of quizes, selected is an index in that array, starts with 1
  */
-const fetchQuestions = (capacity, selected) => {
+const getQuestions = (capacity, selected, questions) => {
     const begin = capacity * (selected - 1)
     const end = capacity * selected
     const quizQuestions = questions
@@ -130,12 +129,12 @@ const mapSqOnCheck = (subquestion) => {
 export default function quiz(state = null, action) {
   switch(action.type) {
     case FETCH_QUIZ:
-      const { capacity, selected } = action.payload;
-      const questions = fetchQuestions(capacity, selected);
+      const { quizSettings: { capacity, selected }, questions } = action.payload;
+      const quizQuestions = getQuestions(capacity, selected, questions);
       const newState = {
         capacity,
-        index: 0, // -1 means not started
-        questions
+        index: 0,
+        questions: quizQuestions
       };
       return newState;
 
