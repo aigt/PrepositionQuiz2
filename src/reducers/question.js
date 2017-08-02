@@ -1,7 +1,9 @@
-import { CHECK_QUESTION, NEXT_QUESTION } from '../actions/QuestionActions';
-
-export const ANSWERING_MODE = 1;
-export const CHECKED_MODE = 2;
+import {
+  ANSWERING_MODE,
+  CHECKED_MODE,
+  CHECK_QUESTION, 
+  NEXT_QUESTION
+} from '../constants'
 
 const initialState = {
   mode: ANSWERING_MODE

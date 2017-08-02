@@ -1,7 +1,11 @@
-import { FETCH_QUIZ, BUTTON_CLICKED, CHECK_QUESTION, NEXT_QUESTION } from '../actions/QuestionActions';
-
-export const IS_AFTER_BE_SUBQUESTION = 1;
-export const COMPLEMENT_SUBQUESTION = 2;
+import {
+  IS_AFTER_BE_SUBQUESTION,
+  COMPLEMENT_SUBQUESTION,
+  FETCH_QUIZ, 
+  BUTTON_CLICKED, 
+  CHECK_QUESTION, 
+  NEXT_QUESTION
+} from '../constants'
 
 const mapAfterBeQuestion = (question) => {
   return {

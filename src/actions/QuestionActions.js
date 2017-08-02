@@ -1,9 +1,10 @@
 import { questions } from '../data/questions';
-
-export const BUTTON_CLICKED = 'BUTTON_CLICKED';
-export const CHECK_QUESTION = 'CHECK_QUESTION';
-export const NEXT_QUESTION = 'NEXT_QUESTION';
-export const FETCH_QUIZ = 'FETCH_QUIZ';
+import {
+  BUTTON_CLICKED,
+  CHECK_QUESTION,
+  NEXT_QUESTION, 
+  FETCH_QUIZ
+} from '../constants'
 
 export function buttonClicked(id) {
   return {

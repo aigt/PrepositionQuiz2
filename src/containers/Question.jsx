@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AfterBeSubquestion from '../components/AfterBeSubquestion';
 import ComplementSubquestion from '../components/ComplementSubquestion';
-import { IS_AFTER_BE_SUBQUESTION, COMPLEMENT_SUBQUESTION } from '../reducers/quiz';
-import { ANSWERING_MODE, CHECKED_MODE } from '../reducers/question';
 import { bindActionCreators } from 'redux'
 import * as questionActions from '../actions/QuestionActions'
+import {
+  ANSWERING_MODE,
+  CHECKED_MODE,
+  IS_AFTER_BE_SUBQUESTION, 
+  COMPLEMENT_SUBQUESTION
+} from '../constants'
 
 class Question extends Component {
   constructor(props) {
