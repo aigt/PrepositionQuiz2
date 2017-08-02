@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 
 class Quiz extends Component {
   componentDidMount(){
-    const { capacity, selected, fetchQuiz } = this.props;
-    fetchQuiz({ capacity, selected });
+    const { params: { mode, capacity, selected }, fetchQuiz } = this.props;
+    fetchQuiz({ mode, capacity, selected });
   }
 
   render() {

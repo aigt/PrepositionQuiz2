@@ -53,11 +53,8 @@ const mapSubquestions = (question) => {
  * @param {integer} selected if all questions are divided by capacity, we have
  * a number of quizes, selected is an index in that array, starts with 1
  */
-const getQuestions = (capacity, selected, questions) => {
-    const begin = capacity * (selected - 1)
-    const end = capacity * selected
+const getQuestions = (questions) => {
     const quizQuestions = questions
-      .slice(begin, end)
       .map((question, i) => {
         const newQuestion = {
           word: question.text,
@@ -133,8 +130,8 @@ const mapSqOnCheck = (subquestion) => {
 export default function quiz(state = null, action) {
   switch(action.type) {
     case FETCH_QUIZ:
-      const { quizSettings: { capacity, selected }, questions } = action.payload;
-      const quizQuestions = getQuestions(capacity, selected, questions);
+      const { capacity , questions } = action.payload;
+      const quizQuestions = getQuestions(questions);
       const newState = {
         capacity,
         index: 0,

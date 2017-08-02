@@ -1,10 +1,11 @@
 import { questions } from '../data/questions';
+import _ from 'lodash';
 import {
   BUTTON_CLICKED,
   CHECK_QUESTION,
   NEXT_QUESTION, 
   FETCH_QUIZ
-} from '../constants'
+} from '../constants';
 
 export function buttonClicked(id) {
   return {
@@ -26,11 +27,33 @@ export function nextQuestion() {
   };
 }
 
-export function fetchQuiz(quizSettings) {
+export function fetchQuiz({ mode, capacity, selected }) {
   const quiz = {
-    quizSettings,
-    questions
+    capacity,
+    questions: []
   };
+
+  switch(mode.toLowerCase()) {
+    case 'all':
+      quiz.questions.push(..._.shuffle(questions));
+      break;
+
+    case 'part':
+      const begin = capacity * (selected - 1);
+      const end = capacity * selected;
+      const partQuestions = questions.slice(begin, end);
+      quiz.questions.push(..._.shuffle(partQuestions));
+      break;
+
+    case 'random':
+      const randomQuestions = _.shuffle(questions).slice(0, capacity);
+      quiz.questions.push(...randomQuestions);
+      break;
+
+    default:
+      console.error('Unknown quiz mode:', mode);
+  }
+
 
   return {
     type: FETCH_QUIZ,
