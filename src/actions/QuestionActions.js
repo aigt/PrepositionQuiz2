@@ -1,4 +1,5 @@
 import { questions } from '../data/questions';
+import * as checkQuestionLib from './QuestionActions.checkQuestion';
 import _ from 'lodash';
 import {
   BUTTON_CLICKED,
@@ -6,6 +7,8 @@ import {
   NEXT_QUESTION, 
   FETCH_QUIZ,
   SET_PROGRESS_STATUS,
+  ADD_SUCCESS_TO_PROGRESS,
+  ADD_WRONG_TO_PROGRESS,
   SKIP_QUESTION
 } from '../constants';
 
@@ -16,10 +19,19 @@ export function buttonClicked(id) {
   };
 }
 
-export function checkQuestion() {
-  return {
-    type: CHECK_QUESTION,
-    payload: null
+export function checkQuestion(question) {
+  checkQuestionLib.checkQuestion(question);
+  return (dispatch) => {
+    dispatch({
+      type: CHECK_QUESTION,
+      payload: question
+    });
+    if(question.hasMistakes) {
+      dispatch(addWrongToProgress());
+    }
+    else {
+      dispatch(addSuccessToProgress());
+    }
   };
 }
 
@@ -71,14 +83,29 @@ export function fetchQuiz({ mode, capacity, selected }) {
 }
 
 export function skipQuestion() {
-  return {
-    type: SKIP_QUESTION
-  };
+  return (dispatch) => {
+    dispatch({
+      type: SKIP_QUESTION
+    });
+    dispatch(addWrongToProgress());
+  } 
 }
 
 export function setProgressStatus(status) {
   return {
     type: SET_PROGRESS_STATUS,
     payload: status
+  };
+}
+
+export function addSuccessToProgress() {
+  return {
+    type: ADD_SUCCESS_TO_PROGRESS
+  };
+}
+
+export function addWrongToProgress() {
+  return {
+    type: ADD_WRONG_TO_PROGRESS
   };
 }

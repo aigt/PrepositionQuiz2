@@ -93,41 +93,6 @@ const mapSqOnBtnClick = (subquestion, complementId, buttonId) => {
   return subquestion;
 }
 
-const mapSqOnCheck = (subquestion) => {
-  if(subquestion.type == IS_AFTER_BE_SUBQUESTION) {
-    const newAfterBe = subquestion.isAfterBe;
-    if(!newAfterBe.isChecked) {   //All checked are processed after they were checked
-      if(newAfterBe.isCorrect) {
-        newAfterBe.isMissed = true;
-      }
-      else {
-        newAfterBe.isAnswered = true;
-      }
-    }
-    const newABSubquestion = subquestion;
-    newABSubquestion.isAfterBe = newAfterBe;
-    return newABSubquestion;
-  }
-  else if(subquestion.type == COMPLEMENT_SUBQUESTION) {
-    const newPrepositions = subquestion.prepositions.map(preposition => {
-      const newPreposition = preposition;
-      if(!newPreposition.isChecked) {   //All checked are processed after they were checked
-        if(newPreposition.isCorrect) {
-          newPreposition.isMissed = true;
-        }
-        else {
-          newPreposition.isAnswered = true;
-        }
-      }
-      return newPreposition;
-    })
-    const newCSubquestion = subquestion;
-    newCSubquestion.prepositions = newPrepositions;
-    return newCSubquestion;
-  }
-  return subquestion;
-}
-
 export default function quiz(state = null, action) {
   switch(action.type) {
     case FETCH_QUIZ:
@@ -154,7 +119,7 @@ export default function quiz(state = null, action) {
 
     case CHECK_QUESTION:
       const onCheckState = state;
-      onCheckState.questions[state.index].subquestions = state.questions[state.index].subquestions.map(sq => mapSqOnCheck(sq));
+      onCheckState.questions[state.index] = action.payload; //checked question in payload
       return onCheckState;
 
     default: 

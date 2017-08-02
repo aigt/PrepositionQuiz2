@@ -8,6 +8,19 @@ class QuizProgressBar extends Component {
     const total = this.props.progress.total;
     const successPers = Math.round(success * 100 / total);
     const wrongPers = Math.round(wrong * 100 / total);
+    let successClassName, wrongClassName;
+    if(successPers > 0) {
+      successClassName = "q-bar-success";
+    }
+    else {
+      successClassName = "q-bar-success hidden";
+    }
+    if(wrongPers > 0) {
+      wrongClassName = "q-bar-wrong";
+    }
+    else {
+      wrongClassName = "q-bar-wrong hidden";
+    }
 
     return (
         <div className="quiz-progress-bar">
@@ -18,13 +31,13 @@ class QuizProgressBar extends Component {
             {success + wrong} of {total} questions
           </div>
           <div className="q-progress">
-            <div className="q-bar-success" style={{ width: `${successPers}%`, minWidth: '3em' }}>
+            <div className={successClassName} style={{ width: `${successPers}%`, minWidth: '3em' }}>
               {successPers}%
             </div>
-            <div className="q-bar-wrong" style={{ width: `${wrongPers}%`, minWidth: '3em' }}>
+            <div className={wrongClassName} style={{ width: `${wrongPers}%`, minWidth: '3em' }}>
               {wrongPers}%
             </div>
-            <div className="q-bar-gray"></div>
+            <div className="q-bar-gray">&nbsp;</div>
           </div>
         </div>
     );

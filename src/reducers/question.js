@@ -3,6 +3,7 @@ import {
   CHECKED_MODE,
   CHECK_QUESTION, 
   NEXT_QUESTION,
+  FETCH_QUIZ,
   SKIP_QUESTION
 } from '../constants'
 
@@ -17,6 +18,7 @@ export default function progress(state = initialState, action) {
 
     case NEXT_QUESTION:
     case SKIP_QUESTION:
+    case FETCH_QUIZ:
       return { mode: ANSWERING_MODE }
 
     default:

@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import AfterBeSubquestion from '../components/AfterBeSubquestion';
 import ComplementSubquestion from '../components/ComplementSubquestion';
-import { bindActionCreators } from 'redux'
-import * as questionActions from '../actions/QuestionActions'
+import { bindActionCreators } from 'redux';
+import * as questionActions from '../actions/QuestionActions';
 import {
   ANSWERING_MODE,
   CHECKED_MODE,
   IS_AFTER_BE_SUBQUESTION, 
   COMPLEMENT_SUBQUESTION
-} from '../constants'
+} from '../constants';
 
 class Question extends Component {
   constructor(props) {
@@ -50,7 +50,9 @@ class Question extends Component {
     switch(mode) {
       case ANSWERING_MODE:
         buttonLabel = "Проверить"
-        buttonAction = (event) => checkQuestion();
+        const { questions, index } = this.props.quiz;
+        const question = questions[index];
+        buttonAction = (event) => checkQuestion(question);
         break;
         
       case CHECKED_MODE:
