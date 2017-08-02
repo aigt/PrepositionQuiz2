@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import AfterBeSubquestion from '../components/AfterBeSubquestion';
 import ComplementSubquestion from '../components/ComplementSubquestion';
 import { bindActionCreators } from 'redux'
@@ -76,6 +77,7 @@ class Question extends Component {
     );
 
     const { buttonLabel, buttonAction } = this.setMainBtnProperties();
+    const skipQuestion = this.props.questionActions.skipQuestion;
 
     return (
       <div className="question">
@@ -88,8 +90,8 @@ class Question extends Component {
               <i className="fa fa-bars" aria-hidden="true"></i>
             </button>
             <ul className="dropdown-menu dropdown-menu-right">
-              <li><a href="#">Пропустить</a></li>
-              <li><a href="#">Стоп</a></li>
+              <li><a onClick={skipQuestion} href="#">Пропустить</a></li>
+              <li><Link to="/">Стоп</Link></li>
             </ul>
           </div>
         </div>

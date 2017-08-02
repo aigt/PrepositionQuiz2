@@ -4,6 +4,7 @@ import {
   FETCH_QUIZ, 
   BUTTON_CLICKED, 
   CHECK_QUESTION, 
+  SKIP_QUESTION, 
   NEXT_QUESTION
 } from '../constants'
 
@@ -140,6 +141,7 @@ export default function quiz(state = null, action) {
       return newState;
 
     case NEXT_QUESTION:
+    case SKIP_QUESTION:
       const nextState = state;
       nextState.index = state.index + 1;
       return nextState;

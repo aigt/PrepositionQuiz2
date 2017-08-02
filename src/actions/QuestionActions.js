@@ -4,7 +4,9 @@ import {
   BUTTON_CLICKED,
   CHECK_QUESTION,
   NEXT_QUESTION, 
-  FETCH_QUIZ
+  FETCH_QUIZ,
+  SET_PROGRESS_STATUS,
+  SKIP_QUESTION
 } from '../constants';
 
 export function buttonClicked(id) {
@@ -35,6 +37,7 @@ export function fetchQuiz({ mode, capacity, selected }) {
 
   switch(mode.toLowerCase()) {
     case 'all':
+      quiz.capacity = questions.length;
       quiz.questions.push(..._.shuffle(questions));
       break;
 
@@ -54,9 +57,28 @@ export function fetchQuiz({ mode, capacity, selected }) {
       console.error('Unknown quiz mode:', mode);
   }
 
+  return (dispatch) => {
+    dispatch({
+      type: FETCH_QUIZ,
+      payload: quiz
+    });
+    dispatch(setProgressStatus({
+      success: 0,
+      wrong: 0,
+      total: quiz.capacity
+    }));
+  };
+}
 
+export function skipQuestion() {
   return {
-    type: FETCH_QUIZ,
-    payload: quiz
-  }
+    type: SKIP_QUESTION
+  };
+}
+
+export function setProgressStatus(status) {
+  return {
+    type: SET_PROGRESS_STATUS,
+    payload: status
+  };
 }
