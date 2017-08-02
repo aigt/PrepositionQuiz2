@@ -4,21 +4,21 @@ export default ({ onButtonClicked, preposition }) => {
   let className;
   if(preposition.isChecked) {
     if (preposition.isCorrect) {
-      className = 'checkButton correctAnswer';
+      className = 'check-button answer-correct';
     }
     else {
-      className = 'checkButton wrongAnswer';
+      className = 'check-button answer-wrong';
     }
   }
   else {
     if (preposition.isMissed) {
-      className = 'checkButton missedAnswer';
+      className = 'check-button answer-missed';
     }
     else if (preposition.isAnswered) {
-      className = 'checkButton answeredAnswer';
+      className = 'check-button answer-answered';
     }
     else {
-      className = 'checkButton';
+      className = 'check-button';
     }
     
   }

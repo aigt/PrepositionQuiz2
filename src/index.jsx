@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux'
 import { browserHistory } from 'react-router';
 import configureStore from './store/configureStore'
-import AppForm from './containers/AppForm.jsx';
+import Quiz from './containers/Quiz.jsx';
 
 const store = configureStore(browserHistory);
 
@@ -12,7 +12,7 @@ class App extends React.Component {
     return (
     <Provider store={store}>
       <div className="container app-container">
-        <AppForm capacity="20" selected="2" />
+        <Quiz capacity="20" selected="2" />
       </div>
     </Provider>
     );

@@ -77,7 +77,7 @@ body
   font-size: 12px
   margin-bottom: 2px
 
-.checkButton
+.check-button
   color: black
   display: inline-block
   border: solid 1px lightgray
@@ -93,7 +93,7 @@ body
     color: black
     cursor: pointer
     text-decoration: none
-  &.correctAnswer
+  &.answer-correct
     background-color: #00CC00
     color: white
     @include box-shadow(0, 0px, 0px, rgba(0, 0, 0, 0.4))
@@ -101,7 +101,7 @@ body
     &:hover
       cursor: auto
       text-decoration: none
-  &.answeredAnswer
+  &.answer-answered
     background-color: white
     color: gray
     text-decoration: line-through
@@ -109,7 +109,7 @@ body
     border-width: 0
     &:hover
       cursor: auto
-  &.missedAnswer
+  &.answer-missed
     background-color: orange
     color: white
     @include box-shadow(0, 0px, 0px, rgba(0, 0, 0, 0.4))
@@ -117,7 +117,7 @@ body
     &:hover
       cursor: auto
       text-decoration: none
-  &.wrongAnswer
+  &.answer-wrong
     border-width: 0
     background-color: red
     text-decoration: line-through

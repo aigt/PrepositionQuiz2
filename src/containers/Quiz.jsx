@@ -4,7 +4,7 @@ import Question from './Question';
 import { fetchQuiz } from '../actions/QuestionActions';
 import { connect } from 'react-redux';
 
-class AppForm extends Component {
+class Quiz extends Component {
   componentDidMount(){
     const { capacity, selected, fetchQuiz } = this.props;
     fetchQuiz({ capacity, selected });
@@ -12,7 +12,7 @@ class AppForm extends Component {
 
   render() {
     return (
-      <div className="row app-form">
+      <div className="row quiz app-form">
         <QuizProgressBar />
         <Question />
       </div>
@@ -20,4 +20,4 @@ class AppForm extends Component {
   }
 }
 
-export default connect(null, { fetchQuiz })(AppForm);
+export default connect(null, { fetchQuiz })(Quiz);
