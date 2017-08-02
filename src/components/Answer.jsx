@@ -1,11 +1,19 @@
 import React from 'react';
-import CheckButton from './CheckButton';
+import PrepositionButton from './PrepositionButton';
 
 export default class Answer extends React.Component {
-  render() {
-    const prepositions = this.props.prepositions;
-    const listItems = prepositions.map((preposition, i) =>
-       <CheckButton label={preposition.text} isCorrectAnswer={preposition.isCorrect} key={i} />
+  constructor(props) {
+    super(props);
+
+    this.buttonsGroup = this.buttonsGroup.bind(this);
+  }
+
+  buttonsGroup(prepositions) {
+    return prepositions.map((preposition) =>
+      <PrepositionButton
+        preposition={preposition} 
+        key={preposition.id}
+        onButtonClicked={(id) => { this.props.onButtonClicked(id); }} />
     ).reduce((prev, curr, i) => {
       if (i > 0) {
         prev.push(<span key={'span' + i}> / </span>); //each item should have a key
@@ -13,11 +21,15 @@ export default class Answer extends React.Component {
       prev.push(curr);
       return prev;
     }, []);
+  }
 
+  render() {
     const className = 'answerGroup ' + this.props.className;
 
     return (
-      <div className={className}>{listItems}</div>
+      <div className={className}>
+        {this.buttonsGroup(this.props.prepositions)}
+      </div>
     );
   }
 }
