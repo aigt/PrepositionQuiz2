@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import AfterBeSubquestion from '../components/AfterBeSubquestion';
 import ComplementSubquestion from '../components/ComplementSubquestion';
 import { bindActionCreators } from 'redux';
@@ -46,18 +46,30 @@ class Question extends Component {
   setMainBtnProperties() {
     let buttonLabel;
     let buttonAction;
-    const { questionActions: { checkQuestion, nextQuestion }, question: { mode } } = this.props;
+    const { questions, index } = this.props.quiz;
+    const question = questions[index];
+    const { questionActions: { checkQuestion, nextQuestion, showResults }, question: { mode } } = this.props;
     switch(mode) {
       case ANSWERING_MODE:
         buttonLabel = "Проверить"
-        const { questions, index } = this.props.quiz;
-        const question = questions[index];
+
         buttonAction = (event) => checkQuestion(question);
         break;
         
       case CHECKED_MODE:
-        buttonLabel = "Следующий"
-        buttonAction = (event) => nextQuestion();
+        if(index < questions.length - 1) {
+          buttonLabel = "Следующий"
+          buttonAction = (event) => nextQuestion();
+        }
+        else {
+          buttonLabel = "Смотреть результаты"
+          buttonAction = (event) => {
+            showResults(this.props.quiz, () => {
+              console.log(this.props)
+              this.props.history.push('/');              
+            });
+          };
+        }
         break;
 
       default:

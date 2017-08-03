@@ -7,9 +7,11 @@ import {
   NEXT_QUESTION, 
   FETCH_QUIZ,
   SET_PROGRESS_STATUS,
+  SPLIT_QUESTIONS,
   ADD_SUCCESS_TO_PROGRESS,
   ADD_WRONG_TO_PROGRESS,
-  SKIP_QUESTION
+  SKIP_QUESTION,
+  SHOW_RESULT
 } from '../constants';
 
 export function buttonClicked(id) {
@@ -108,4 +110,21 @@ export function addWrongToProgress() {
   return {
     type: ADD_WRONG_TO_PROGRESS
   };
+}
+
+export function splitQuestions (quantity) {
+  return {
+    type: SPLIT_QUESTIONS,
+    payload: quantity
+  };
+}
+
+export function showResults(quiz, callback) {
+  return (dispatch) => {
+    dispatch({
+      type: SHOW_RESULT,
+      payload: null
+    });
+    callback();
+  }
 }

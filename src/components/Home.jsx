@@ -1,18 +1,29 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
+import QuizSetup from '../containers/QuizSetup';
+import { questions } from '../data/questions';
 
 export default class Home extends Component {
   render() {
+    const questionsQuantity = questions.length;
     return (
       <div className='row home app-form'>
         <h1 className="question-subject-word">Hello, friend!</h1>
-        <p>Choose your option:</p>
-        <ul>
-          <li><Link to='/quiz/all'>Start quiz with all questions</Link></li>
-          <li><Link to='/quiz/part/20/2'>Start quiz</Link></li>
-          <li><Link to='/quiz/random/20'>Start random 20 questions</Link></li>
-          <li><Link to='/answers'>See all answers</Link></li>
-        </ul>
+        <p>Make your choice:</p>
+        <div>
+          <div className="subquestion">
+            <h4 className="list-group-item-heading">All questions</h4>
+            <Link className="btn btn-default btn-block" to='/quiz/all'>Start quiz with all {questionsQuantity} questions</Link>
+          </div>
+          <div className="subquestion">
+            <h4 className="list-group-item-heading">Divide into subquizes with defined number of questions</h4>
+            <QuizSetup />
+          </div>
+          <div className="subquestion">
+            <h4 className="list-group-item-heading">Answers</h4>
+            <Link className="btn btn-default btn-block" to='/answers'>See all answers</Link>
+          </div>
+        </div>
       </div>
     )
   }

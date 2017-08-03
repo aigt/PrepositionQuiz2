@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 class Quiz extends Component {
   componentDidMount(){
-    const { params: { mode, capacity, selected }, fetchQuiz } = this.props;
+    const { match: { params: { mode, capacity, selected }}, fetchQuiz } = this.props;
     fetchQuiz({ mode, capacity, selected });
   }
 
@@ -14,7 +14,7 @@ class Quiz extends Component {
     return (
       <div className="row quiz app-form">
         <QuizProgressBar />
-        <Question />
+        <Question history={this.props.history} />
       </div>
     );
   }
