@@ -1,19 +1,18 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux'
-// hashHistory instead of browserHistory because of my free hosting
+// HashRouter instead of browserHistory because of my free hosting
 import { HashRouter as Router, Route } from 'react-router-dom';
-import { hashHistory } from 'react-router';
 import configureStore from './store/configureStore'
 import App from './components/App.jsx';
 
-const store = configureStore(hashHistory);
+const store = configureStore();
 
 class Index extends React.Component {
   render () {
     return (
     <Provider store={store}>
-        <Router history={hashHistory} >
+        <Router >
           <Route path='/' component={App} />
         </Router>
     </Provider>

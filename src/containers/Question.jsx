@@ -101,7 +101,7 @@ class Question extends Component {
               <i className="fa fa-bars" aria-hidden="true"></i>
             </button>
             <ul className="dropdown-menu dropdown-menu-right">
-              <li><a onClick={skipQuestion} href="#">Пропустить</a></li>
+              <li><a onClick={skipQuestion} className="clickable">Пропустить</a></li>
               <li><Link to="/">Стоп</Link></li>
             </ul>
           </div>
