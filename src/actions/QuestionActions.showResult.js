@@ -4,7 +4,8 @@ export const countResult = (quiz) => {
   const result = {
     questionsWithMistakes,
     successedQuestionQuantity: quiz.questions.length - questionsWithMistakes.length,
-    questionQuantity: quiz.questions.length
+    questionQuantity: quiz.questions.length,
+    restartOptions: quiz.restartOptions,
   };
 
   return result;

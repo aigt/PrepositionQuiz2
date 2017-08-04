@@ -20,10 +20,10 @@ class QuizSetup extends Component {
       const buttons = [];
       for(let i = 1; i <= quizQuantity; i++) {
         const linkTo = `/quiz/part/${questionPerQuiz}/${i}`;
-        buttons.push(<Link className="btn btn-default" to={linkTo} key={i}>Quiz #{i}</Link>);
+        buttons.push(<Link className="btn btn-default" to={linkTo} key={i}>Start quiz #{i}</Link>);
       }
       const randomLinkTo = `/quiz/random/${questionPerQuiz}`;
-      buttons.push(<Link className="btn btn-default" to={randomLinkTo} key="random">Random {questionPerQuiz} questions</Link>)
+      buttons.push(<Link className="btn btn-default" to={randomLinkTo} key="random">Start random {questionPerQuiz} questions</Link>)
       return buttons;
     }
     else {

@@ -96,12 +96,13 @@ const mapSqOnBtnClick = (subquestion, complementId, buttonId) => {
 export default function quiz(state = null, action) {
   switch(action.type) {
     case FETCH_QUIZ:
-      const { capacity , questions } = action.payload;
+      const { capacity , questions, restartOptions } = action.payload;
       const quizQuestions = getQuestions(questions);
       const newState = {
         capacity,
         index: 0,
-        questions: quizQuestions
+        questions: quizQuestions,
+        restartOptions
       };
       return newState;
 

@@ -19,8 +19,8 @@ class Result extends Component {
       .filter(subq => subq.type == COMPLEMENT_SUBQUESTION)
       .map((subq, i) => {
         const prepositions = subq.prepositions
-          .filter(prep => {console.log('prep', prep); return prep.isCorrect;}
-          ).reduce((prev, correctPrep, i) => {
+          .filter(prep => prep.isCorrect)
+          .reduce((prev, correctPrep, i) => {
             if (i > 0) {
               return `${prev} / ${correctPrep.text}`
             }
@@ -65,8 +65,37 @@ class Result extends Component {
     });
   }
 
+  renderRestartButton(restartOptions) {
+    if(!restartOptions.mode) {
+      return <div/>
+    }
+
+    switch(restartOptions.mode) {
+      case 'all':
+        const allTo = `/quiz/all`;
+        return <Link className="btn btn-default" to={allTo}>Restart</Link>;
+
+      case 'part':
+        const partTo = `/quiz/part/${restartOptions.capacity}/${restartOptions.selected}`;
+        return <Link className="btn btn-default" to={partTo}>Restart</Link>;
+
+      case 'random':
+        const randomTo = `/quiz/random/${restartOptions.capacity}`;
+        return <Link className="btn btn-default" to={randomTo}>Restart</Link>;
+
+      default:
+        console.error('Unknown restartOptions mode:', restartOptions);
+    }
+  }
+
   render() {
-    const { successedQuestionQuantity, questionQuantity, questionsWithMistakes } = this.props.result;
+    console.log(this.props.result)
+    const { 
+      successedQuestionQuantity,
+      questionQuantity, 
+      questionsWithMistakes, 
+      restartOptions 
+    } = this.props.result;
     const successPers = Math.round(successedQuestionQuantity * 100 / questionQuantity);
     return (
       <div className="row result app-form">
@@ -89,9 +118,11 @@ class Result extends Component {
             </tbody>
           </table>
         </div>
-        
+
         <div className="question-buttons-bar">
           <Link className="btn btn-default" to="/">Ок</Link>
+          {' '}
+          {this.renderRestartButton(restartOptions)}
         </div>
       </div>
     );

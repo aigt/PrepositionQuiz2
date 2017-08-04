@@ -47,6 +47,7 @@ export function nextQuestion() {
 export function fetchQuiz({ mode, capacity, selected }) {
   const quiz = {
     capacity,
+    restartOptions: { mode, capacity, selected },
     questions: []
   };
 
