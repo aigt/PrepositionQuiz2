@@ -11,7 +11,6 @@ const store = configureStore(hashHistory);
 
 class Index extends React.Component {
   render () {
-    console.log(hashHistory)
     return (
     <Provider store={store}>
         <Router history={hashHistory} >

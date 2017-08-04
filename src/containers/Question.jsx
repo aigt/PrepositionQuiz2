@@ -48,7 +48,7 @@ class Question extends Component {
     let buttonAction;
     const { questions, index } = this.props.quiz;
     const question = questions[index];
-    const { questionActions: { checkQuestion, nextQuestion, showResults }, question: { mode } } = this.props;
+    const { questionActions: { checkQuestion, nextQuestion, showResult }, question: { mode } } = this.props;
     switch(mode) {
       case ANSWERING_MODE:
         buttonLabel = "Проверить"
@@ -64,10 +64,7 @@ class Question extends Component {
         else {
           buttonLabel = "Смотреть результаты"
           buttonAction = (event) => {
-            showResults(this.props.quiz, () => {
-              console.log(this.props)
-              this.props.history.push('/');              
-            });
+            showResult(this.props.quiz, () => this.props.history.push('/result'));
           };
         }
         break;

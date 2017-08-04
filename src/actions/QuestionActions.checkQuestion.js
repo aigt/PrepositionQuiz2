@@ -72,6 +72,5 @@ export const checkQuestion = (question) => {
   if(hasMistakes) {
     checkedQuestion.hasMistakes = true;
   }
-  console.log('checkedQuestion',checkedQuestion)
   return checkedQuestion;
 }

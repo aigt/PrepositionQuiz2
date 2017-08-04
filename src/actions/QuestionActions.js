@@ -1,5 +1,6 @@
 import { questions } from '../data/questions';
 import * as checkQuestionLib from './QuestionActions.checkQuestion';
+import * as showResultLib from './QuestionActions.showResult';
 import _ from 'lodash';
 import {
   BUTTON_CLICKED,
@@ -119,11 +120,12 @@ export function splitQuestions (quantity) {
   };
 }
 
-export function showResults(quiz, callback) {
+export function showResult(quiz, callback) {
+  const result = showResultLib.countResult(quiz);
   return (dispatch) => {
     dispatch({
       type: SHOW_RESULT,
-      payload: null
+      payload: result
     });
     callback();
   }
