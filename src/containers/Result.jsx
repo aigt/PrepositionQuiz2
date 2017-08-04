@@ -48,7 +48,7 @@ class Result extends Component {
       let toBe;
       const isAfterBeSubquestion = question.subquestions.find(subq => subq.type == IS_AFTER_BE_SUBQUESTION);
       if(isAfterBeSubquestion.isAfterBe.isCorrect) {
-        toBe = "to be"
+        toBe = "to\xa0be"
       }
       else {
         toBe = "-"
@@ -79,7 +79,7 @@ class Result extends Component {
             <thead>
               <tr>
                 <th>#</th>
-                <th>to be</th>
+                <th>to&nbsp;be</th>
                 <th>word</th>
                 <th>complements</th>
               </tr>

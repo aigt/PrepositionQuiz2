@@ -49,6 +49,7 @@ class QuizSetup extends Component {
     return (
       <div className="quiz-setup">
         <div className="input-group">
+          <span className="input-group-addon" id="basic-addon1">Questions per quiz:</span>
           <input 
             type="number" 
             className="form-control" 
@@ -59,9 +60,6 @@ class QuizSetup extends Component {
             value={quantity}
             onChange={this.handleChange}
           />
-          <span className="input-group-btn">
-            <button className="btn btn-default" type="button">Divide!</button>
-          </span>
         </div>
         <div className="btn-toolbar margin-top-10" role="toolbar">
           {this.renderButtons()}
