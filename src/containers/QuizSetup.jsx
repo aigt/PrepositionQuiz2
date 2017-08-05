@@ -16,7 +16,7 @@ class QuizSetup extends Component {
     const questionPerQuiz = this.props.quizSetup.quantity;
     const questionsQuantity = questions.length;
     const quizQuantity = Math.ceil(questionsQuantity / questionPerQuiz);
-    if(quizQuantity > 1) {
+    if(quizQuantity >= 1) {
       const buttons = [];
       for(let i = 1; i <= quizQuantity; i++) {
         const linkTo = `/quiz/part/${questionPerQuiz}/${i}`;
@@ -34,11 +34,11 @@ class QuizSetup extends Component {
   handleChange(event) {
     const questionsQuantity = questions.length;
     let quantity = event.target.value;
-    if(quantity < 2) {
-      quantity = 2;
+    if(quantity < 1) {
+      quantity = 1;
     }
-    if(quantity > questionsQuantity - 1) {
-      quantity = quantity;
+    if(quantity > questionsQuantity) {
+      quantity = questionsQuantity;
     }
     this.props.splitQuestions(quantity);
   }
@@ -55,8 +55,8 @@ class QuizSetup extends Component {
             className="form-control" 
             placeholder="Questions per quiz" 
             aria-describedby="basic-addon1" 
-            min={2}
-            max={questionsQuantity - 1}
+            min={1}
+            max={questionsQuantity}
             value={quantity}
             onChange={this.handleChange}
           />
