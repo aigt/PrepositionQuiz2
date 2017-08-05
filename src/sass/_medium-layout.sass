@@ -1,0 +1,12 @@
+@mixin box-shadow($top, $left, $blur, $color, $inset:"")
+  -webkit-box-shadow: $top $left $blur $color #{$inset}
+  -moz-box-shadow: $top $left $blur $color #{$inset}
+  box-shadow: $top $left $blur $color #{$inset}
+
+body
+  background-color: lightgray
+
+.app-form
+  border: 2px gray solid
+  margin-top: 20px
+  margin-bottom: 20px

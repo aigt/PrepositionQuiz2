@@ -3,32 +3,13 @@ import { questions } from '../data/questions';
 import { splitQuestions } from '../actions/QuestionActions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import QuizSelectButtonsToolbar from '../components/QuizSelectButtonsToolbar'
 
 class QuizSetup extends Component {
   constructor(props) {
     super(props);
 
-    this.renderButtons = this.renderButtons.bind(this);
     this.handleChange = this.handleChange.bind(this);
-  }
-
-  renderButtons() {
-    const questionPerQuiz = this.props.quizSetup.quantity;
-    const questionsQuantity = questions.length;
-    const quizQuantity = Math.ceil(questionsQuantity / questionPerQuiz);
-    if(quizQuantity >= 1) {
-      const buttons = [];
-      for(let i = 1; i <= quizQuantity; i++) {
-        const linkTo = `/quiz/part/${questionPerQuiz}/${i}`;
-        buttons.push(<Link className="btn btn-default" to={linkTo} key={i}>Start quiz #{i}</Link>);
-      }
-      const randomLinkTo = `/quiz/random/${questionPerQuiz}`;
-      buttons.push(<Link className="btn btn-default" to={randomLinkTo} key="random">Start random {questionPerQuiz} questions</Link>)
-      return buttons;
-    }
-    else {
-      return <div>You can start all questions by pressing button above</div>;
-    }
   }
 
   handleChange(event) {
@@ -46,6 +27,7 @@ class QuizSetup extends Component {
   render() {
     const questionsQuantity = questions.length;
     const { quantity } = this.props.quizSetup;
+
     return (
       <div className="quiz-setup">
         <div className="input-group">
@@ -61,9 +43,7 @@ class QuizSetup extends Component {
             onChange={this.handleChange}
           />
         </div>
-        <div className="btn-toolbar margin-top-10" role="toolbar">
-          {this.renderButtons()}
-        </div>
+        <QuizSelectButtonsToolbar questionPerQuiz={quantity} />
       </div>
     );
   }
