@@ -89,7 +89,6 @@ class Result extends Component {
   }
 
   render() {
-    console.log(this.props.result)
     const { 
       successedQuestionQuantity,
       questionQuantity, 
