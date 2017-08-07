@@ -91,6 +91,7 @@ class Question extends Component {
 
     const { buttonLabel, buttonAction } = this.setMainBtnProperties();
     const skipQuestion = this.props.skipQuestion;
+    const skipQuestionClassName = this.props.question.mode == CHECKED_MODE ? 'hidden' : 'clickable';
 
     return (
       <div className="question">
@@ -103,7 +104,7 @@ class Question extends Component {
               <i className="fa fa-bars" aria-hidden="true"></i>
             </button>
             <ul className="dropdown-menu dropdown-menu-right">
-              <li><a onClick={skipQuestion} className="clickable">Пропустить</a></li>
+              <li><a onClick={skipQuestion} className={skipQuestionClassName}>Пропустить</a></li>
               <li><Link to="/">Стоп</Link></li>
             </ul>
           </div>
