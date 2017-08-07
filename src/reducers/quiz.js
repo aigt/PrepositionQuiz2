@@ -114,7 +114,7 @@ export default function quiz(state = null, action) {
 
     case BUTTON_CLICKED:
       const { complementId, buttonId } = action.payload;
-      const onBtnClickState = Object.assign({}, state );
+      const onBtnClickState = Object.assign({}, state);
       onBtnClickState.questions[state.index].subquestions = state.questions[state.index].subquestions.map(sq => mapSqOnBtnClick(sq, complementId, buttonId));
       return onBtnClickState;
 

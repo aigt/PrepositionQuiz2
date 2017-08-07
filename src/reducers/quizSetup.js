@@ -6,7 +6,7 @@ const initialState = {
   quantity: 15
 };
 
-export default function progress(state = initialState, action) {
+export default function quizSetup(state = initialState, action) {
     switch (action.type) {
     case SPLIT_QUESTIONS:
       return { quantity: action.payload };

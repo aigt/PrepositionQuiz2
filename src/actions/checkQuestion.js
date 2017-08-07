@@ -6,7 +6,7 @@ import {
 } from '../constants';
 
 const checkAfterBeSubquestion = (subquestion) => {
-  const newABSubquestion = Object.assign(subquestion);
+  const newABSubquestion = Object.assign({}, subquestion);
 
   if(subquestion.isAfterBe.isChecked) {
     if(!subquestion.isAfterBe.isCorrect) {
@@ -27,7 +27,7 @@ const checkAfterBeSubquestion = (subquestion) => {
 }
 
 const mapPreposition = (preposition) => {
-    const newPreposition = Object.assign(preposition);
+    const newPreposition = Object.assign({}, preposition);
 
     if(newPreposition.isChecked) {
       if(!newPreposition.isCorrect) {
@@ -48,7 +48,7 @@ const mapPreposition = (preposition) => {
 }
 
 const checkComplementSubquestion = (subquestion) => {
-  const newCSubquestion = Object.assign(subquestion);
+  const newCSubquestion = Object.assign({}, subquestion);
   const newPrepositions = newCSubquestion.prepositions.map(preposition => {
     const newPreposition = mapPreposition(preposition);
     if(newPreposition.hasMistakes) {
@@ -77,7 +77,7 @@ const checkSubquestion = (subquestion) => {
 
 const _checkQuestion = (question) => {
   let hasMistakes = false;
-  const checkedQuestion = Object.assign(question);
+  const checkedQuestion = Object.assign({}, question);
 
   checkedQuestion.subquestions = question.subquestions.map(sq => {
     const checkedSubuestion = checkSubquestion(sq);

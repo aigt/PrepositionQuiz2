@@ -3,6 +3,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+require("babel-polyfill");
 
 const BUILD_DIR = path.resolve(__dirname, './public');
 const APP_DIR = path.resolve(__dirname, './src');
@@ -17,7 +18,7 @@ module.exports = {
   context: __dirname,
 
   entry: {
-    bundle: './src/index.jsx',
+    bundle: ['babel-polyfill', './src/index.jsx'],
     styles: './src/sass/styles.sass'
   },
 
