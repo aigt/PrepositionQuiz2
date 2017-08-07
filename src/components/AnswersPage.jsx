@@ -26,7 +26,7 @@ export default class AnswersPage extends Component {
             else {
               return correctPrep.text;
             }
-          }, ''); 
+          }, '');
 
         return (
           <li key={i}>
@@ -46,10 +46,10 @@ export default class AnswersPage extends Component {
     return questions.map((question, i) => {
       let toBe;
       if(question.afterBe) {
-        toBe = "to\xa0be"
+        toBe = "to\xa0be";
       }
       else {
-        toBe = "-"
+        toBe = "-";
       }
 
       return (
@@ -68,7 +68,7 @@ export default class AnswersPage extends Component {
   }
 
   render() {
-    const questionsToShow = questions.filter(question => question.text.includes(this.state.filter))
+    const questionsToShow = questions.filter(question => question.text.includes(this.state.filter));
     return (
       <div className="row result app-form">
         <h1 className="question-subject-word">Answers</h1>

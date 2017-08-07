@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Quiz from '../containers/Quiz.jsx';
 import Result from '../containers/Result.jsx';
 import AnswersPage from '../components/AnswersPage.jsx';
@@ -19,6 +19,6 @@ export default class App extends Component {
           <Route path='/' component={Home} />
         </Switch>
       </div>
-    )
+    );
   }
 }

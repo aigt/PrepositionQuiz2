@@ -5,7 +5,7 @@ import {
   NEXT_QUESTION,
   FETCH_QUIZ,
   SKIP_QUESTION
-} from '../constants'
+} from '../constants';
 
 const initialState = {
   mode: ANSWERING_MODE
@@ -14,12 +14,12 @@ const initialState = {
 export default function progress(state = initialState, action) {
   switch (action.type) {
     case CHECK_QUESTION:
-      return { mode: CHECKED_MODE }
+      return { mode: CHECKED_MODE };
 
     case NEXT_QUESTION:
     case SKIP_QUESTION:
     case FETCH_QUIZ:
-      return { mode: ANSWERING_MODE }
+      return { mode: ANSWERING_MODE };
 
     default:
       return state;

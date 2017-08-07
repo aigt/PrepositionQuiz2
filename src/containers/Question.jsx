@@ -53,8 +53,7 @@ class Question extends Component {
     const { checkQuestion, nextQuestion, showResult, question: { mode } } = this.props;
     switch(mode) {
       case ANSWERING_MODE:
-        buttonLabel = "Проверить"
-
+        buttonLabel = "Проверить";
         buttonAction = (event) => checkQuestion(question);
         break;
         
@@ -118,7 +117,7 @@ const mapStateToProps = ({ question, quiz }) => {
     question,
     quiz
   };
-}
+};
 
 export default connect(mapStateToProps, { 
   checkQuestion, 

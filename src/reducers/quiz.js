@@ -6,7 +6,7 @@ import {
   CHECK_QUESTION, 
   SKIP_QUESTION, 
   NEXT_QUESTION
-} from '../constants'
+} from '../constants';
 
 const mapAfterBeQuestion = (question) => {
   return {
@@ -34,7 +34,7 @@ const mapComplement = (complement, id) => {
       text: complement.text,
       comment: complement.comment,
       prepositions: mapPrepositions(complement.prepositions)
-    }
+    };
 }
 
 const mapSubquestions = (question) => {

@@ -16,7 +16,7 @@ const renderButtons = (questionPerQuiz) => {
       buttons.push(<Link className="btn btn-default" to={linkTo} key={i}>{quizName}</Link>);
     }
     const randomLinkTo = `/quiz/random/${questionPerQuiz}`;
-    buttons.push(<Link className="btn btn-default" to={randomLinkTo} key="random">Start random {questionPerQuiz} questions</Link>)
+    buttons.push(<Link className="btn btn-default" to={randomLinkTo} key="random">Start random {questionPerQuiz} questions</Link>);
     return buttons;
   }
   else {

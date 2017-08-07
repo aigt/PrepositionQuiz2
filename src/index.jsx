@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 // HashRouter instead of browserHistory because of my free hosting
 import { HashRouter as Router, Route } from 'react-router-dom';
-import configureStore from './store/configureStore'
+import configureStore from './store/configureStore';
 import App from './components/App.jsx';
 
 const store = configureStore();

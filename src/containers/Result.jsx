@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import {
   IS_AFTER_BE_SUBQUESTION,
   COMPLEMENT_SUBQUESTION
-} from '../constants'
+} from '../constants';
 
 class Result extends Component {
   constructor(props) {
@@ -48,10 +48,10 @@ class Result extends Component {
       let toBe;
       const isAfterBeSubquestion = question.subquestions.find(subq => subq.type == IS_AFTER_BE_SUBQUESTION);
       if(isAfterBeSubquestion.isAfterBe.isCorrect) {
-        toBe = "to\xa0be"
+        toBe = "to\xa0be";
       }
       else {
-        toBe = "-"
+        toBe = "-";
       }
 
       return (
@@ -67,7 +67,7 @@ class Result extends Component {
 
   renderRestartButton(restartOptions) {
     if(!restartOptions.mode) {
-      return <div/>
+      return <div></div>;
     }
 
     switch(restartOptions.mode) {
@@ -128,6 +128,6 @@ class Result extends Component {
   }
 }
 
-const mapStateToProps = ({ result }) => { return { result }; }
+const mapStateToProps = ({ result }) => { return { result }; };
 
 export default connect(mapStateToProps)(Result);

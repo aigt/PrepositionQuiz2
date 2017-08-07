@@ -63,6 +63,7 @@ const checkComplementSubquestion = (subquestion) => {
 
 const checkSubquestion = (subquestion) => {
   let hasMistakes = false;
+
   switch(subquestion.type) {
     case IS_AFTER_BE_SUBQUESTION:
       return checkAfterBeSubquestion(subquestion);
@@ -97,15 +98,18 @@ const _checkQuestion = (question) => {
 export const checkQuestion = (question) => {
   const checkedQuestion = _checkQuestion(question);
   return (dispatch) => {
+
     dispatch({
       type: CHECK_QUESTION,
       payload: checkedQuestion
     });
+
     if(checkedQuestion.hasMistakes) {
       dispatch(addWrongToProgress());
     }
     else {
       dispatch(addSuccessToProgress());
     }
+    
   };
 }

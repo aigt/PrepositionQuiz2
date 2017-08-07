@@ -3,7 +3,7 @@ import { questions } from '../data/questions';
 import { splitQuestions } from '../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import QuizSelectButtonsToolbar from '../components/QuizSelectButtonsToolbar'
+import QuizSelectButtonsToolbar from '../components/QuizSelectButtonsToolbar';
 
 class QuizSetup extends Component {
   constructor(props) {
@@ -53,6 +53,6 @@ const mapStateToProps = ({ quizSetup }) => {
   return {
     quizSetup
   }
-}
+};
 
 export default connect(mapStateToProps, { splitQuestions })(QuizSetup);

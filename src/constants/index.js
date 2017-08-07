@@ -1,10 +1,10 @@
 // Subquestion types
-export const IS_AFTER_BE_SUBQUESTION = 1;
-export const COMPLEMENT_SUBQUESTION = 2;
+export const IS_AFTER_BE_SUBQUESTION = 'IS_AFTER_BE_SUBQUESTION';
+export const COMPLEMENT_SUBQUESTION = 'COMPLEMENT_SUBQUESTION';
 
 // Current question modes
-export const ANSWERING_MODE = 1;
-export const CHECKED_MODE = 2;
+export const ANSWERING_MODE = 'ANSWERING_MODE';
+export const CHECKED_MODE = 'CHECKED_MODE';
 
 // Action types
 export const BUTTON_CLICKED = 'BUTTON_CLICKED';
