@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import AfterBeSubquestion from '../components/AfterBeSubquestion';
 import ComplementSubquestion from '../components/ComplementSubquestion';
 import { bindActionCreators } from 'redux';
-import * as questionActions from '../actions/QuestionActions';
+import { nextQuestion, skipQuestion, buttonClicked } from '../actions';
+import { checkQuestion } from '../actions/checkQuestion';
+import { showResult } from '../actions/showResult';
 import {
   ANSWERING_MODE,
   CHECKED_MODE,
@@ -21,7 +23,7 @@ class Question extends Component {
   }
 
   mapSubquestionIntoJSX(subquestion, i, questionWord) {
-    const { buttonClicked } = this.props.questionActions;
+    const { buttonClicked } = this.props;
     switch (subquestion.type) {
       case IS_AFTER_BE_SUBQUESTION:
         return <AfterBeSubquestion
@@ -48,7 +50,7 @@ class Question extends Component {
     let buttonAction;
     const { questions, index } = this.props.quiz;
     const question = questions[index];
-    const { questionActions: { checkQuestion, nextQuestion, showResult }, question: { mode } } = this.props;
+    const { checkQuestion, nextQuestion, showResult, question: { mode } } = this.props;
     switch(mode) {
       case ANSWERING_MODE:
         buttonLabel = "Проверить"
@@ -88,7 +90,7 @@ class Question extends Component {
     );
 
     const { buttonLabel, buttonAction } = this.setMainBtnProperties();
-    const skipQuestion = this.props.questionActions.skipQuestion;
+    const skipQuestion = this.props.skipQuestion;
 
     return (
       <div className="question">
@@ -118,10 +120,10 @@ const mapStateToProps = ({ question, quiz }) => {
   };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    questionActions: bindActionCreators(questionActions, dispatch)
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Question);
+export default connect(mapStateToProps, { 
+  checkQuestion, 
+  nextQuestion, 
+  showResult, 
+  skipQuestion, 
+  buttonClicked 
+})(Question);

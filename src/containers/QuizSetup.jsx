@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { questions } from '../data/questions';
-import { splitQuestions } from '../actions/QuestionActions';
+import { splitQuestions } from '../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import QuizSelectButtonsToolbar from '../components/QuizSelectButtonsToolbar'

@@ -1,4 +1,8 @@
-export const countResult = (quiz) => {
+import {
+  SHOW_RESULT
+} from '../constants';
+
+const countResult = (quiz) => {
   const questionsWithMistakes = quiz.questions.filter(question => question.hasMistakes);
 
   const result = {
@@ -9,4 +13,15 @@ export const countResult = (quiz) => {
   };
 
   return result;
+}
+
+export const showResult = (quiz, callback) => {
+  const result = countResult(quiz);
+  return (dispatch) => {
+    dispatch({
+      type: SHOW_RESULT,
+      payload: result
+    });
+    callback();
+  }
 }

@@ -1,50 +1,30 @@
 import { questions } from '../data/questions';
-import * as checkQuestionLib from './QuestionActions.checkQuestion';
-import * as showResultLib from './QuestionActions.showResult';
 import _ from 'lodash';
 import {
   BUTTON_CLICKED,
-  CHECK_QUESTION,
   NEXT_QUESTION, 
   FETCH_QUIZ,
   SET_PROGRESS_STATUS,
   SPLIT_QUESTIONS,
   ADD_SUCCESS_TO_PROGRESS,
   ADD_WRONG_TO_PROGRESS,
-  SKIP_QUESTION,
-  SHOW_RESULT
+  SKIP_QUESTION
 } from '../constants';
 
-export function buttonClicked(id) {
+export const buttonClicked = (id) => {
   return {
     type: BUTTON_CLICKED,
     payload: id
   };
 }
 
-export function checkQuestion(question) {
-  checkQuestionLib.checkQuestion(question);
-  return (dispatch) => {
-    dispatch({
-      type: CHECK_QUESTION,
-      payload: question
-    });
-    if(question.hasMistakes) {
-      dispatch(addWrongToProgress());
-    }
-    else {
-      dispatch(addSuccessToProgress());
-    }
-  };
-}
-
-export function nextQuestion() {
+export const nextQuestion = () =>{
   return {
     type: NEXT_QUESTION
   };
 }
 
-export function fetchQuiz({ mode, capacity, selected }) {
+export const fetchQuiz = ({ mode, capacity, selected }) => {
   const quiz = {
     capacity,
     restartOptions: { mode, capacity, selected },
@@ -86,7 +66,7 @@ export function fetchQuiz({ mode, capacity, selected }) {
   };
 }
 
-export function skipQuestion() {
+export const skipQuestion = () => {
   return (dispatch) => {
     dispatch({
       type: SKIP_QUESTION
@@ -95,39 +75,28 @@ export function skipQuestion() {
   } 
 }
 
-export function setProgressStatus(status) {
+export const setProgressStatus = (status) => {
   return {
     type: SET_PROGRESS_STATUS,
     payload: status
   };
 }
 
-export function addSuccessToProgress() {
+export const addSuccessToProgress = () => {
   return {
     type: ADD_SUCCESS_TO_PROGRESS
   };
 }
 
-export function addWrongToProgress() {
+export const addWrongToProgress = () => {
   return {
     type: ADD_WRONG_TO_PROGRESS
   };
 }
 
-export function splitQuestions (quantity) {
+export const splitQuestions = (quantity) => {
   return {
     type: SPLIT_QUESTIONS,
     payload: quantity
   };
-}
-
-export function showResult(quiz, callback) {
-  const result = showResultLib.countResult(quiz);
-  return (dispatch) => {
-    dispatch({
-      type: SHOW_RESULT,
-      payload: result
-    });
-    callback();
-  }
 }
