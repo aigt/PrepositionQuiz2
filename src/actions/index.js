@@ -1,4 +1,3 @@
-import { questions } from '../data/questions';
 import _ from 'lodash';
 import {
   BUTTON_CLICKED,
@@ -18,51 +17,9 @@ export const buttonClicked = (id) => {
   };
 }
 
-export const nextQuestion = () =>{
+export const nextQuestion = () => {
   return {
     type: NEXT_QUESTION
-  };
-}
-
-export const fetchQuiz = ({ mode, capacity, selected }) => {
-  const quiz = {
-    capacity,
-    restartOptions: { mode, capacity, selected },
-    questions: []
-  };
-
-  switch(mode.toLowerCase()) {
-    case 'all':
-      quiz.capacity = questions.length;
-      quiz.questions.push(..._.shuffle(questions));
-      break;
-
-    case 'part':
-      const begin = capacity * (selected - 1);
-      const end = capacity * selected;
-      const partQuestions = questions.slice(begin, end);
-      quiz.questions.push(..._.shuffle(partQuestions));
-      break;
-
-    case 'random':
-      const randomQuestions = _.shuffle(questions).slice(0, capacity);
-      quiz.questions.push(...randomQuestions);
-      break;
-
-    default:
-      console.error('Unknown quiz mode:', mode);
-  }
-
-  return (dispatch) => {
-    dispatch({
-      type: FETCH_QUIZ,
-      payload: quiz
-    });
-    dispatch(setProgressStatus({
-      success: 0,
-      wrong: 0,
-      total: quiz.capacity
-    }));
   };
 }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import QuizProgressBar from './QuizProgressBar';
 import Question from './Question';
-import { fetchQuiz } from '../actions';
+import { fetchQuiz } from '../actions/fetchQuiz';
 import { connect } from 'react-redux';
 
 class Quiz extends Component {

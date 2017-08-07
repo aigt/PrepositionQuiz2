@@ -77,20 +77,15 @@ const checkSubquestion = (subquestion) => {
 }
 
 const _checkQuestion = (question) => {
-  let hasMistakes = false;
   const checkedQuestion = Object.assign({}, question);
 
   checkedQuestion.subquestions = question.subquestions.map(sq => {
     const checkedSubuestion = checkSubquestion(sq);
     if(checkedSubuestion.hasMistakes) {
-      hasMistakes = true;
+      checkedQuestion.hasMistakes = true;
     }
     return checkedSubuestion;
   });
-
-  if(hasMistakes) {
-    checkedQuestion.hasMistakes = true;
-  }
 
   return checkedQuestion;
 }
@@ -110,6 +105,6 @@ export const checkQuestion = (question) => {
     else {
       dispatch(addSuccessToProgress());
     }
-    
+
   };
 }

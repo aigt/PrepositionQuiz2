@@ -6,6 +6,7 @@ import ComplementSubquestion from '../components/ComplementSubquestion';
 import { bindActionCreators } from 'redux';
 import { nextQuestion, skipQuestion, buttonClicked } from '../actions';
 import { checkQuestion } from '../actions/checkQuestion';
+import { fetchQuiz } from '../actions/fetchQuiz';
 import { showResult } from '../actions/showResult';
 import {
   ANSWERING_MODE,
