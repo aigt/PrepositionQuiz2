@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import {
   BUTTON_CLICKED,
   NEXT_QUESTION, 
