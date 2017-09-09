@@ -3,7 +3,7 @@ import {
   COMPLEMENT_SUBQUESTION,
   FETCH_QUIZ, 
   BUTTON_CLICKED, 
-  CHECK_QUESTION, 
+  CHECK_ANSWERS, 
   SKIP_QUESTION, 
   NEXT_QUESTION
 } from '../constants';
@@ -62,7 +62,7 @@ export default function quiz(state = null, action) {
       onBtnClickState.questions[state.index].subquestions = state.questions[state.index].subquestions.map(sq => mapSqOnBtnClick(sq, complementId, buttonId));
       return onBtnClickState;
 
-    case CHECK_QUESTION:
+    case CHECK_ANSWERS:
       const onCheckState = state;
       onCheckState.questions[state.index] = action.payload; //checked question in payload
       return onCheckState;

@@ -8,7 +8,7 @@ export const CHECKED_MODE = 'CHECKED_MODE';
 
 // Action types
 export const BUTTON_CLICKED = 'BUTTON_CLICKED';
-export const CHECK_QUESTION = 'CHECK_QUESTION';
+export const CHECK_ANSWERS = 'CHECK_ANSWERS';
 export const NEXT_QUESTION = 'NEXT_QUESTION';
 export const FETCH_QUIZ = 'FETCH_QUIZ';
 export const SKIP_QUESTION = 'SKIP_QUESTION';

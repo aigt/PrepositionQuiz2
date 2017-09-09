@@ -5,7 +5,7 @@ import AfterBeSubquestion from '../components/AfterBeSubquestion';
 import ComplementSubquestion from '../components/ComplementSubquestion';
 import { bindActionCreators } from 'redux';
 import { nextQuestion, skipQuestion, buttonClicked } from '../actions';
-import { checkQuestion } from '../actions/checkQuestion';
+import { checkAnswers } from '../actions/checkAnswers';
 import { fetchQuiz } from '../actions/fetchQuiz';
 import { showResult } from '../actions/showResult';
 import {
@@ -51,11 +51,11 @@ class Question extends Component {
     let buttonAction;
     const { questions, index } = this.props.quiz;
     const question = questions[index];
-    const { checkQuestion, nextQuestion, showResult, question: { mode } } = this.props;
+    const { checkAnswers, nextQuestion, showResult, question: { mode } } = this.props;
     switch(mode) {
       case ANSWERING_MODE:
         buttonLabel = "Проверить";
-        buttonAction = (event) => checkQuestion(question);
+        buttonAction = (event) => checkAnswers(question);
         break;
         
       case CHECKED_MODE:
@@ -122,7 +122,7 @@ const mapStateToProps = ({ question, quiz }) => {
 };
 
 export default connect(mapStateToProps, { 
-  checkQuestion, 
+  checkAnswers, 
   nextQuestion, 
   showResult, 
   skipQuestion, 

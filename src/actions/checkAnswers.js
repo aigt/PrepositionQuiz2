@@ -1,6 +1,6 @@
 import { addSuccessToProgress, addWrongToProgress } from '.';
 import {
-  CHECK_QUESTION,
+  CHECK_ANSWERS,
   IS_AFTER_BE_SUBQUESTION, 
   COMPLEMENT_SUBQUESTION
 } from '../constants';
@@ -76,10 +76,14 @@ const checkSubquestion = (subquestion) => {
   }
 }
 
-const _checkQuestion = (question) => {
-  const checkedQuestion = Object.assign({}, question);
+/**
+ * 
+ * @param {*} questionWithAnswers 
+ */
+const _checkAnswers = (questionWithAnswers) => {
+  const checkedQuestion = Object.assign({}, questionWithAnswers);
 
-  checkedQuestion.subquestions = question.subquestions.map(sq => {
+  checkedQuestion.subquestions = questionWithAnswers.subquestions.map(sq => {
     const checkedSubuestion = checkSubquestion(sq);
     if(checkedSubuestion.hasMistakes) {
       checkedQuestion.hasMistakes = true;
@@ -90,15 +94,23 @@ const _checkQuestion = (question) => {
   return checkedQuestion;
 }
 
-export const checkQuestion = (question) => {
-  const checkedQuestion = _checkQuestion(question);
+/**
+ * Dispatches result of user answer and changing progress status
+ * @param {*} questionWithAnswers 
+ */
+export const checkAnswers = (questionWithAnswers) => {
+
+  // checks answers on question
+  const checkedQuestion = _checkAnswers(questionWithAnswers);
+  
   return (dispatch) => {
 
     dispatch({
-      type: CHECK_QUESTION,
+      type: CHECK_ANSWERS,
       payload: checkedQuestion
     });
 
+    // changing progress status to display in progrress bar
     if(checkedQuestion.hasMistakes) {
       dispatch(addWrongToProgress());
     }
