@@ -110,7 +110,7 @@ export const checkAnswers = (questionWithAnswers) => {
       payload: checkedQuestion
     });
 
-    // changing progress status to display in progrress bar
+    // changing progress status to display in progress bar
     if(checkedQuestion.hasMistakes) {
       dispatch(addWrongToProgress());
     }
